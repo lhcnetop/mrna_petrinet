@@ -1,0 +1,1240 @@
+{
+  "places": {
+    "p_chainA_0": 200,
+    "p_preprotoinsulin": 0,
+    "p_chainA_1": 0,
+    "p_chainA_2": 0,
+    "p_chainA_3": 0,
+    "p_chainA_4": 0,
+    "p_chainA_5": 0,
+    "p_chainA_6": 0,
+    "p_chainA_7": 0,
+    "p_chainA_8": 0,
+    "p_chainA_9": 0,
+    "p_chainA_10": 0,
+    "p_chainA_11": 0,
+    "p_chainA_12": 0,
+    "p_chainA_13": 0,
+    "p_chainA_14": 0,
+    "p_chainA_15": 0,
+    "p_chainA_16": 0,
+    "p_chainA_17": 0,
+    "p_chainA_18": 0,
+    "p_chainA_19": 0,
+    "p_chainA_20": 0,
+    "p_chainA_21": 0,
+    "p_chainA_22": 0,
+    "p_chainA_23": 0,
+    "p_chainA_24": 0,
+    "p_chainA_25": 0,
+    "p_chainA_26": 0,
+    "p_chainA_27": 0,
+    "p_chainA_28": 0,
+    "p_chainA_29": 0,
+    "p_chainA_30": 0,
+    "p_chainA_31": 0,
+    "p_chainA_32": 0,
+    "p_chainA_33": 0,
+    "p_chainA_34": 0,
+    "p_chainA_35": 0,
+    "p_chainA_36": 0,
+    "p_chainA_37": 0,
+    "p_chainA_38": 0,
+    "p_chainA_39": 0,
+    "p_chainA_40": 0,
+    "p_chainA_41": 0,
+    "p_chainA_42": 0,
+    "p_chainA_43": 0,
+    "p_chainA_44": 0,
+    "p_chainA_45": 0,
+    "p_chainA_46": 0,
+    "p_chainA_47": 0,
+    "p_chainA_48": 0,
+    "p_chainA_49": 0,
+    "p_chainA_50": 0,
+    "p_chainA_51": 0,
+    "p_chainA_52": 0,
+    "p_chainA_53": 0,
+    "p_chainA_54": 0,
+    "p_chainA_55": 0,
+    "p_chainA_56": 0,
+    "p_chainA_57": 0,
+    "p_chainA_58": 0,
+    "p_chainA_59": 0,
+    "p_chainA_60": 0,
+    "p_chainA_61": 0,
+    "p_chainA_62": 0,
+    "p_chainA_63": 0,
+    "p_chainA_64": 0,
+    "p_chainA_65": 0,
+    "p_chainA_66": 0,
+    "p_chainA_67": 0,
+    "p_chainA_68": 0,
+    "p_chainA_69": 0,
+    "p_chainA_70": 0,
+    "p_chainA_71": 0,
+    "p_chainA_72": 0,
+    "p_chainA_73": 0,
+    "p_chainA_74": 0,
+    "p_chainA_75": 0,
+    "p_chainA_76": 0,
+    "p_chainA_77": 0,
+    "p_chainA_78": 0,
+    "p_chainA_79": 0,
+    "p_chainA_80": 0,
+    "p_chainA_81": 0,
+    "p_chainA_82": 0,
+    "p_chainA_83": 0,
+    "p_chainA_84": 0,
+    "p_chainA_85": 0,
+    "p_chainA_86": 0,
+    "p_chainA_87": 0,
+    "p_chainA_88": 0,
+    "p_chainA_89": 0,
+    "p_chainA_90": 0,
+    "p_chainA_91": 0,
+    "p_chainA_92": 0,
+    "p_chainA_93": 0,
+    "p_chainA_94": 0,
+    "p_chainA_95": 0,
+    "p_chainA_96": 0,
+    "p_chainA_97": 0,
+    "p_chainA_98": 0,
+    "p_chainA_99": 0,
+    "p_chainA_100": 0,
+    "p_chainA_101": 0,
+    "p_chainA_102": 0,
+    "p_chainA_103": 0,
+    "p_chainA_104": 0,
+    "p_chainA_105": 0,
+    "p_chainA_106": 0,
+    "p_chainA_107": 0,
+    "p_chainA_108": 0,
+    "p_chainA_109": 0,
+    "p_M": 200,
+    "p_A": 1000,
+    "p_L": 2000,
+    "p_W": 200,
+    "p_R": 500,
+    "p_P": 600,
+    "p_G": 1200,
+    "p_D": 200,
+    "p_F": 300,
+    "p_V": 600,
+    "p_N": 300,
+    "p_Q": 700,
+    "p_H": 200,
+    "p_C": 600,
+    "p_S": 500,
+    "p_E": 800,
+    "p_Y": 400,
+    "p_T": 300,
+    "p_K": 200,
+    "p_I": 200,
+    "p_free_ribosomes": 1
+  },
+  "transitions": [
+    {
+      "name": "t_chainA_t1",
+      "consume": {
+        "chainA_0": 1,
+        "M": 1,
+        "p_free_ribosomes": 1
+      },
+      "produce": {
+        "chainA_1": 1
+      }
+    },
+    {
+      "name": "t_chainA_t2",
+      "consume": {
+        "chainA_1": 1,
+        "A": 1
+      },
+      "produce": {
+        "chainA_2": 1
+      }
+    },
+    {
+      "name": "t_chainA_t3",
+      "consume": {
+        "chainA_2": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_3": 1
+      }
+    },
+    {
+      "name": "t_chainA_t4",
+      "consume": {
+        "chainA_3": 1,
+        "W": 1
+      },
+      "produce": {
+        "chainA_4": 1
+      }
+    },
+    {
+      "name": "t_chainA_t5",
+      "consume": {
+        "chainA_4": 1,
+        "M": 1
+      },
+      "produce": {
+        "chainA_5": 1
+      }
+    },
+    {
+      "name": "t_chainA_t6",
+      "consume": {
+        "chainA_5": 1,
+        "R": 1
+      },
+      "produce": {
+        "chainA_6": 1
+      }
+    },
+    {
+      "name": "t_chainA_t7",
+      "consume": {
+        "chainA_6": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_7": 1
+      }
+    },
+    {
+      "name": "t_chainA_t8",
+      "consume": {
+        "chainA_7": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_8": 1
+      }
+    },
+    {
+      "name": "t_chainA_t9",
+      "consume": {
+        "chainA_8": 1,
+        "P": 1
+      },
+      "produce": {
+        "chainA_9": 1
+      }
+    },
+    {
+      "name": "t_chainA_t10",
+      "consume": {
+        "chainA_9": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_10": 1
+      }
+    },
+    {
+      "name": "t_chainA_t11",
+      "consume": {
+        "chainA_10": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_11": 1
+      }
+    },
+    {
+      "name": "t_chainA_t12",
+      "consume": {
+        "chainA_11": 1,
+        "A": 1
+      },
+      "produce": {
+        "chainA_12": 1
+      }
+    },
+    {
+      "name": "t_chainA_t13",
+      "consume": {
+        "chainA_12": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_13": 1
+      }
+    },
+    {
+      "name": "t_chainA_t14",
+      "consume": {
+        "chainA_13": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_14": 1
+      }
+    },
+    {
+      "name": "t_chainA_t15",
+      "consume": {
+        "chainA_14": 1,
+        "A": 1
+      },
+      "produce": {
+        "chainA_15": 1
+      }
+    },
+    {
+      "name": "t_chainA_t16",
+      "consume": {
+        "chainA_15": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_16": 1
+      }
+    },
+    {
+      "name": "t_chainA_t17",
+      "consume": {
+        "chainA_16": 1,
+        "W": 1
+      },
+      "produce": {
+        "chainA_17": 1
+      }
+    },
+    {
+      "name": "t_chainA_t18",
+      "consume": {
+        "chainA_17": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_18": 1
+      }
+    },
+    {
+      "name": "t_chainA_t19",
+      "consume": {
+        "chainA_18": 1,
+        "P": 1
+      },
+      "produce": {
+        "chainA_19": 1
+      }
+    },
+    {
+      "name": "t_chainA_t20",
+      "consume": {
+        "chainA_19": 1,
+        "D": 1
+      },
+      "produce": {
+        "chainA_20": 1
+      }
+    },
+    {
+      "name": "t_chainA_t21",
+      "consume": {
+        "chainA_20": 1,
+        "P": 1
+      },
+      "produce": {
+        "chainA_21": 1
+      }
+    },
+    {
+      "name": "t_chainA_t22",
+      "consume": {
+        "chainA_21": 1,
+        "A": 1
+      },
+      "produce": {
+        "chainA_22": 1
+      }
+    },
+    {
+      "name": "t_chainA_t23",
+      "consume": {
+        "chainA_22": 1,
+        "A": 1
+      },
+      "produce": {
+        "chainA_23": 1
+      }
+    },
+    {
+      "name": "t_chainA_t24",
+      "consume": {
+        "chainA_23": 1,
+        "A": 1
+      },
+      "produce": {
+        "chainA_24": 1
+      }
+    },
+    {
+      "name": "t_chainA_t25",
+      "consume": {
+        "chainA_24": 1,
+        "F": 1
+      },
+      "produce": {
+        "chainA_25": 1
+      }
+    },
+    {
+      "name": "t_chainA_t26",
+      "consume": {
+        "chainA_25": 1,
+        "V": 1
+      },
+      "produce": {
+        "chainA_26": 1
+      }
+    },
+    {
+      "name": "t_chainA_t27",
+      "consume": {
+        "chainA_26": 1,
+        "N": 1
+      },
+      "produce": {
+        "chainA_27": 1
+      }
+    },
+    {
+      "name": "t_chainA_t28",
+      "consume": {
+        "chainA_27": 1,
+        "Q": 1
+      },
+      "produce": {
+        "chainA_28": 1
+      }
+    },
+    {
+      "name": "t_chainA_t29",
+      "consume": {
+        "chainA_28": 1,
+        "H": 1
+      },
+      "produce": {
+        "chainA_29": 1
+      }
+    },
+    {
+      "name": "t_chainA_t30",
+      "consume": {
+        "chainA_29": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_30": 1
+      }
+    },
+    {
+      "name": "t_chainA_t31",
+      "consume": {
+        "chainA_30": 1,
+        "C": 1
+      },
+      "produce": {
+        "chainA_31": 1
+      }
+    },
+    {
+      "name": "t_chainA_t32",
+      "consume": {
+        "chainA_31": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_32": 1
+      }
+    },
+    {
+      "name": "t_chainA_t33",
+      "consume": {
+        "chainA_32": 1,
+        "S": 1
+      },
+      "produce": {
+        "chainA_33": 1
+      }
+    },
+    {
+      "name": "t_chainA_t34",
+      "consume": {
+        "chainA_33": 1,
+        "H": 1
+      },
+      "produce": {
+        "chainA_34": 1
+      }
+    },
+    {
+      "name": "t_chainA_t35",
+      "consume": {
+        "chainA_34": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_35": 1
+      }
+    },
+    {
+      "name": "t_chainA_t36",
+      "consume": {
+        "chainA_35": 1,
+        "V": 1
+      },
+      "produce": {
+        "chainA_36": 1
+      }
+    },
+    {
+      "name": "t_chainA_t37",
+      "consume": {
+        "chainA_36": 1,
+        "E": 1
+      },
+      "produce": {
+        "chainA_37": 1
+      }
+    },
+    {
+      "name": "t_chainA_t38",
+      "consume": {
+        "chainA_37": 1,
+        "A": 1
+      },
+      "produce": {
+        "chainA_38": 1
+      }
+    },
+    {
+      "name": "t_chainA_t39",
+      "consume": {
+        "chainA_38": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_39": 1
+      }
+    },
+    {
+      "name": "t_chainA_t40",
+      "consume": {
+        "chainA_39": 1,
+        "Y": 1
+      },
+      "produce": {
+        "chainA_40": 1
+      }
+    },
+    {
+      "name": "t_chainA_t41",
+      "consume": {
+        "chainA_40": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_41": 1
+      }
+    },
+    {
+      "name": "t_chainA_t42",
+      "consume": {
+        "chainA_41": 1,
+        "V": 1
+      },
+      "produce": {
+        "chainA_42": 1
+      }
+    },
+    {
+      "name": "t_chainA_t43",
+      "consume": {
+        "chainA_42": 1,
+        "C": 1
+      },
+      "produce": {
+        "chainA_43": 1
+      }
+    },
+    {
+      "name": "t_chainA_t44",
+      "consume": {
+        "chainA_43": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_44": 1
+      }
+    },
+    {
+      "name": "t_chainA_t45",
+      "consume": {
+        "chainA_44": 1,
+        "E": 1
+      },
+      "produce": {
+        "chainA_45": 1
+      }
+    },
+    {
+      "name": "t_chainA_t46",
+      "consume": {
+        "chainA_45": 1,
+        "R": 1
+      },
+      "produce": {
+        "chainA_46": 1
+      }
+    },
+    {
+      "name": "t_chainA_t47",
+      "consume": {
+        "chainA_46": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_47": 1
+      }
+    },
+    {
+      "name": "t_chainA_t48",
+      "consume": {
+        "chainA_47": 1,
+        "F": 1
+      },
+      "produce": {
+        "chainA_48": 1
+      }
+    },
+    {
+      "name": "t_chainA_t49",
+      "consume": {
+        "chainA_48": 1,
+        "F": 1
+      },
+      "produce": {
+        "chainA_49": 1
+      }
+    },
+    {
+      "name": "t_chainA_t50",
+      "consume": {
+        "chainA_49": 1,
+        "Y": 1
+      },
+      "produce": {
+        "chainA_50": 1
+      }
+    },
+    {
+      "name": "t_chainA_t51",
+      "consume": {
+        "chainA_50": 1,
+        "T": 1
+      },
+      "produce": {
+        "chainA_51": 1
+      }
+    },
+    {
+      "name": "t_chainA_t52",
+      "consume": {
+        "chainA_51": 1,
+        "P": 1
+      },
+      "produce": {
+        "chainA_52": 1
+      }
+    },
+    {
+      "name": "t_chainA_t53",
+      "consume": {
+        "chainA_52": 1,
+        "K": 1
+      },
+      "produce": {
+        "chainA_53": 1
+      }
+    },
+    {
+      "name": "t_chainA_t54",
+      "consume": {
+        "chainA_53": 1,
+        "T": 1
+      },
+      "produce": {
+        "chainA_54": 1
+      }
+    },
+    {
+      "name": "t_chainA_t55",
+      "consume": {
+        "chainA_54": 1,
+        "R": 1
+      },
+      "produce": {
+        "chainA_55": 1
+      }
+    },
+    {
+      "name": "t_chainA_t56",
+      "consume": {
+        "chainA_55": 1,
+        "R": 1
+      },
+      "produce": {
+        "chainA_56": 1
+      }
+    },
+    {
+      "name": "t_chainA_t57",
+      "consume": {
+        "chainA_56": 1,
+        "E": 1
+      },
+      "produce": {
+        "chainA_57": 1
+      }
+    },
+    {
+      "name": "t_chainA_t58",
+      "consume": {
+        "chainA_57": 1,
+        "A": 1
+      },
+      "produce": {
+        "chainA_58": 1
+      }
+    },
+    {
+      "name": "t_chainA_t59",
+      "consume": {
+        "chainA_58": 1,
+        "E": 1
+      },
+      "produce": {
+        "chainA_59": 1
+      }
+    },
+    {
+      "name": "t_chainA_t60",
+      "consume": {
+        "chainA_59": 1,
+        "D": 1
+      },
+      "produce": {
+        "chainA_60": 1
+      }
+    },
+    {
+      "name": "t_chainA_t61",
+      "consume": {
+        "chainA_60": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_61": 1
+      }
+    },
+    {
+      "name": "t_chainA_t62",
+      "consume": {
+        "chainA_61": 1,
+        "Q": 1
+      },
+      "produce": {
+        "chainA_62": 1
+      }
+    },
+    {
+      "name": "t_chainA_t63",
+      "consume": {
+        "chainA_62": 1,
+        "V": 1
+      },
+      "produce": {
+        "chainA_63": 1
+      }
+    },
+    {
+      "name": "t_chainA_t64",
+      "consume": {
+        "chainA_63": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_64": 1
+      }
+    },
+    {
+      "name": "t_chainA_t65",
+      "consume": {
+        "chainA_64": 1,
+        "Q": 1
+      },
+      "produce": {
+        "chainA_65": 1
+      }
+    },
+    {
+      "name": "t_chainA_t66",
+      "consume": {
+        "chainA_65": 1,
+        "V": 1
+      },
+      "produce": {
+        "chainA_66": 1
+      }
+    },
+    {
+      "name": "t_chainA_t67",
+      "consume": {
+        "chainA_66": 1,
+        "E": 1
+      },
+      "produce": {
+        "chainA_67": 1
+      }
+    },
+    {
+      "name": "t_chainA_t68",
+      "consume": {
+        "chainA_67": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_68": 1
+      }
+    },
+    {
+      "name": "t_chainA_t69",
+      "consume": {
+        "chainA_68": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_69": 1
+      }
+    },
+    {
+      "name": "t_chainA_t70",
+      "consume": {
+        "chainA_69": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_70": 1
+      }
+    },
+    {
+      "name": "t_chainA_t71",
+      "consume": {
+        "chainA_70": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_71": 1
+      }
+    },
+    {
+      "name": "t_chainA_t72",
+      "consume": {
+        "chainA_71": 1,
+        "P": 1
+      },
+      "produce": {
+        "chainA_72": 1
+      }
+    },
+    {
+      "name": "t_chainA_t73",
+      "consume": {
+        "chainA_72": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_73": 1
+      }
+    },
+    {
+      "name": "t_chainA_t74",
+      "consume": {
+        "chainA_73": 1,
+        "A": 1
+      },
+      "produce": {
+        "chainA_74": 1
+      }
+    },
+    {
+      "name": "t_chainA_t75",
+      "consume": {
+        "chainA_74": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_75": 1
+      }
+    },
+    {
+      "name": "t_chainA_t76",
+      "consume": {
+        "chainA_75": 1,
+        "S": 1
+      },
+      "produce": {
+        "chainA_76": 1
+      }
+    },
+    {
+      "name": "t_chainA_t77",
+      "consume": {
+        "chainA_76": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_77": 1
+      }
+    },
+    {
+      "name": "t_chainA_t78",
+      "consume": {
+        "chainA_77": 1,
+        "Q": 1
+      },
+      "produce": {
+        "chainA_78": 1
+      }
+    },
+    {
+      "name": "t_chainA_t79",
+      "consume": {
+        "chainA_78": 1,
+        "P": 1
+      },
+      "produce": {
+        "chainA_79": 1
+      }
+    },
+    {
+      "name": "t_chainA_t80",
+      "consume": {
+        "chainA_79": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_80": 1
+      }
+    },
+    {
+      "name": "t_chainA_t81",
+      "consume": {
+        "chainA_80": 1,
+        "A": 1
+      },
+      "produce": {
+        "chainA_81": 1
+      }
+    },
+    {
+      "name": "t_chainA_t82",
+      "consume": {
+        "chainA_81": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_82": 1
+      }
+    },
+    {
+      "name": "t_chainA_t83",
+      "consume": {
+        "chainA_82": 1,
+        "E": 1
+      },
+      "produce": {
+        "chainA_83": 1
+      }
+    },
+    {
+      "name": "t_chainA_t84",
+      "consume": {
+        "chainA_83": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_84": 1
+      }
+    },
+    {
+      "name": "t_chainA_t85",
+      "consume": {
+        "chainA_84": 1,
+        "S": 1
+      },
+      "produce": {
+        "chainA_85": 1
+      }
+    },
+    {
+      "name": "t_chainA_t86",
+      "consume": {
+        "chainA_85": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_86": 1
+      }
+    },
+    {
+      "name": "t_chainA_t87",
+      "consume": {
+        "chainA_86": 1,
+        "Q": 1
+      },
+      "produce": {
+        "chainA_87": 1
+      }
+    },
+    {
+      "name": "t_chainA_t88",
+      "consume": {
+        "chainA_87": 1,
+        "K": 1
+      },
+      "produce": {
+        "chainA_88": 1
+      }
+    },
+    {
+      "name": "t_chainA_t89",
+      "consume": {
+        "chainA_88": 1,
+        "R": 1
+      },
+      "produce": {
+        "chainA_89": 1
+      }
+    },
+    {
+      "name": "t_chainA_t90",
+      "consume": {
+        "chainA_89": 1,
+        "G": 1
+      },
+      "produce": {
+        "chainA_90": 1
+      }
+    },
+    {
+      "name": "t_chainA_t91",
+      "consume": {
+        "chainA_90": 1,
+        "I": 1
+      },
+      "produce": {
+        "chainA_91": 1
+      }
+    },
+    {
+      "name": "t_chainA_t92",
+      "consume": {
+        "chainA_91": 1,
+        "V": 1
+      },
+      "produce": {
+        "chainA_92": 1
+      }
+    },
+    {
+      "name": "t_chainA_t93",
+      "consume": {
+        "chainA_92": 1,
+        "E": 1
+      },
+      "produce": {
+        "chainA_93": 1
+      }
+    },
+    {
+      "name": "t_chainA_t94",
+      "consume": {
+        "chainA_93": 1,
+        "Q": 1
+      },
+      "produce": {
+        "chainA_94": 1
+      }
+    },
+    {
+      "name": "t_chainA_t95",
+      "consume": {
+        "chainA_94": 1,
+        "C": 1
+      },
+      "produce": {
+        "chainA_95": 1
+      }
+    },
+    {
+      "name": "t_chainA_t96",
+      "consume": {
+        "chainA_95": 1,
+        "C": 1
+      },
+      "produce": {
+        "chainA_96": 1
+      }
+    },
+    {
+      "name": "t_chainA_t97",
+      "consume": {
+        "chainA_96": 1,
+        "T": 1
+      },
+      "produce": {
+        "chainA_97": 1
+      }
+    },
+    {
+      "name": "t_chainA_t98",
+      "consume": {
+        "chainA_97": 1,
+        "S": 1
+      },
+      "produce": {
+        "chainA_98": 1
+      }
+    },
+    {
+      "name": "t_chainA_t99",
+      "consume": {
+        "chainA_98": 1,
+        "I": 1
+      },
+      "produce": {
+        "chainA_99": 1
+      }
+    },
+    {
+      "name": "t_chainA_t100",
+      "consume": {
+        "chainA_99": 1,
+        "C": 1
+      },
+      "produce": {
+        "chainA_100": 1
+      }
+    },
+    {
+      "name": "t_chainA_t101",
+      "consume": {
+        "chainA_100": 1,
+        "S": 1
+      },
+      "produce": {
+        "chainA_101": 1
+      }
+    },
+    {
+      "name": "t_chainA_t102",
+      "consume": {
+        "chainA_101": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_102": 1
+      }
+    },
+    {
+      "name": "t_chainA_t103",
+      "consume": {
+        "chainA_102": 1,
+        "Y": 1
+      },
+      "produce": {
+        "chainA_103": 1
+      }
+    },
+    {
+      "name": "t_chainA_t104",
+      "consume": {
+        "chainA_103": 1,
+        "Q": 1
+      },
+      "produce": {
+        "chainA_104": 1
+      }
+    },
+    {
+      "name": "t_chainA_t105",
+      "consume": {
+        "chainA_104": 1,
+        "L": 1
+      },
+      "produce": {
+        "chainA_105": 1
+      }
+    },
+    {
+      "name": "t_chainA_t106",
+      "consume": {
+        "chainA_105": 1,
+        "E": 1
+      },
+      "produce": {
+        "chainA_106": 1
+      }
+    },
+    {
+      "name": "t_chainA_t107",
+      "consume": {
+        "chainA_106": 1,
+        "N": 1
+      },
+      "produce": {
+        "chainA_107": 1
+      }
+    },
+    {
+      "name": "t_chainA_t108",
+      "consume": {
+        "chainA_107": 1,
+        "Y": 1
+      },
+      "produce": {
+        "chainA_108": 1
+      }
+    },
+    {
+      "name": "t_chainA_t109",
+      "consume": {
+        "chainA_108": 1,
+        "C": 1
+      },
+      "produce": {
+        "chainA_109": 1
+      }
+    },
+    {
+      "name": "t_chainA_t110",
+      "consume": {
+        "chainA_109": 1,
+        "N": 1
+      },
+      "produce": {
+        "preprotoinsulin": 1,
+        "p_free_ribosomes": 1
+      }
+    }
+  ]
+}

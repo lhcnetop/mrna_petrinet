@@ -1,0 +1,15 @@
+{
+    "chains":[
+        {
+            "name":"chainA",
+            "sequence":"MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGIVEQCCTSICSLYQLENYCN",
+            "polipeptide_name":"preprotoinsulin"
+        }
+    ],
+    "simulation_parameters":{
+        "initial_chains_marking":200,
+        "max_protein_output_goal":100,
+        "excess_aminoacids_factor":1,
+        "initial_free_ribosomes":1
+    }
+}
