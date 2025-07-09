@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mrna-petrinet"
-version = "0.1.0"
+version = "0.1.1"
 description = "mRNA PetriNet simulation using petri-net-core framework"
 readme = "README.md"
 license = {text = "Apache-2.0"}
@@ -26,7 +26,7 @@ classifiers = [
 ]
 requires-python = ">=3.8"
 dependencies = [
-    "petri-net-core>=0.2.0"
+    "petri-net-core>=0.3.2"
 ]
 
 [project.optional-dependencies]
@@ -41,3 +41,6 @@ dev = [
 Homepage = "https://github.com/lhcnetop/mrna_petrinet"
 Repository = "https://github.com/lhcnetop/mrna_petrinet"
 Issues = "https://github.com/lhcnetop/mrna_petrinet/issues" 
+
+[tool.setuptools.packages.find]
+where = ["src"] 

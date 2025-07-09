@@ -1,5 +1,5 @@
 import json
-import petrinet.pnet as pnet
+import petri_net_core.petrinet.pnet as pnet
 
 valid_aminoacids=["Arg","His","Lys","Asp","Glu","Ser","Thr","Asn","Gln","Cys","Sec","Gly","Pro","Ala","Val","Ile","Leu","Met","Phe","Tyr","Trp"]
 

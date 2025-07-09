@@ -1,6 +1,28 @@
 # mrna_petrinet
 Project using the PetriNets framework for simulation. This project is originally from https://github.com/lhcnetop/petri_net and is currently being maintained there. But to keep things organized, a refactor will separate the mRNA simulations and code and bring it to this repo, leaving only the main parts of petri net simulation and analysis there.
 
+## First-time setup
+
+1. Create and activate a virtual environment:
+   ```sh
+   python -m venv .venv
+   # On Windows PowerShell:
+   .venv\Scripts\Activate
+   # On Unix/macOS:
+   source .venv/bin/activate
+   ```
+2. Install the project in editable mode (recommended for development):
+   ```sh
+   pip install -e .
+   ```
+
+## Running tests
+
+To run the test suite:
+```sh
+python -m unittest tests/mrna_tests.py -v
+```
+
 ## Using a local copy of petri_net_core for development
 
 By default, this project depends on the published `petri-net-core` package from PyPI.
