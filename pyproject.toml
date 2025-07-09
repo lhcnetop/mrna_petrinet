@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mrna-petrinet"
+version = "0.1.0"
+description = "mRNA PetriNet simulation using petri-net-core framework"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "lhcnetop"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "petri-net-core>=0.2.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "black>=21.0",
+    "flake8>=3.8",
+]
+
+[project.urls]
+Homepage = "https://github.com/lhcnetop/mrna_petrinet"
+Repository = "https://github.com/lhcnetop/mrna_petrinet"
+Issues = "https://github.com/lhcnetop/mrna_petrinet/issues" 
