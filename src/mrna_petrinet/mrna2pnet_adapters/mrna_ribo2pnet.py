@@ -19,11 +19,14 @@ class mRNARibo2PNetAdapter(mRNA2PNetAdapter):
             Updated network dictionary with ribosome places and modified transitions
         """
         places_dict = network_dict["places"]
-        transitions_array = network_dict["transitions"]
+        transitions_dict = network_dict["transitions"]
         simulation_parameters = json_input["simulation_parameters"]
         
+        # Get ribosome parameters
+        ribosome_params = simulation_parameters.get("ribosome_parameters", {})
+        
         # Add free ribosomes place
-        places_dict['p_free_ribosomes'] = simulation_parameters.get('initial_free_ribosomes', 50)
+        places_dict['p_free_ribosomes'] = ribosome_params.get('initial_ribosomes', 50)
         
         # Modify transitions to include ribosome consumption/production
         chains = json_input["chains"]
@@ -33,20 +36,16 @@ class mRNARibo2PNetAdapter(mRNA2PNetAdapter):
             
             # Find first transition (consumes ribosome)
             first_transition_name = f't_{chain_name}_t1'
-            for transition in transitions_array:
-                if transition['name'] == first_transition_name:
-                    if 'consume' not in transition:
-                        transition['consume'] = {}
-                    transition['consume']['p_free_ribosomes'] = 1
-                    break
+            if first_transition_name in transitions_dict:
+                if 'consume' not in transitions_dict[first_transition_name]:
+                    transitions_dict[first_transition_name]['consume'] = {}
+                transitions_dict[first_transition_name]['consume']['p_free_ribosomes'] = 1
             
             # Find last transition (produces ribosome back)
             last_transition_name = f't_{chain_name}_t{len(chain)}'
-            for transition in transitions_array:
-                if transition['name'] == last_transition_name:
-                    if 'produce' not in transition:
-                        transition['produce'] = {}
-                    transition['produce']['p_free_ribosomes'] = 1
-                    break
+            if last_transition_name in transitions_dict:
+                if 'produce' not in transitions_dict[last_transition_name]:
+                    transitions_dict[last_transition_name]['produce'] = {}
+                transitions_dict[last_transition_name]['produce']['p_free_ribosomes'] = 1
         
         return network_dict 
