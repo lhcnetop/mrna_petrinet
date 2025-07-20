@@ -1,5 +1,5 @@
 import json
-import petrinet.pnet as pnet
+import petri_net_core.petrinet.pnet as pnet
 
 valid_aminoacids=["Arg","His","Lys","Asp","Glu","Ser","Thr","Asn","Gln","Cys","Sec","Gly","Pro","Ala","Val","Ile","Leu","Met","Phe","Tyr","Trp"]
 
@@ -67,7 +67,7 @@ class mRNA2PNetAdapter: ##Alterar nome, dado que isso não implementa o padrão 
         places_dict={}
         amino_count={}
 
-        transitions_array=[]
+        transitions_dict={}
         ''' Transition object schema
         transition={
             "name":"",
@@ -91,32 +91,29 @@ class mRNA2PNetAdapter: ##Alterar nome, dado que isso não implementa o padrão 
             # Build the places for the intermediary states, as well as extracting the list of used aminoacids with counters
             for amino in chain:
                 chain_index+=1
+                transition_name = 't_'+chain_name+'_t'+str(chain_index)
                 if chain_index<len(chain): # Here we skip the last part because we consider the translation done when the last aminoacid is attached, therefore, the last transition will simply output the protein
                     places_dict['p_'+chain_name+'_'+str(chain_index)]=0
-                    transitions_array.append({
-                            'name':'t_'+chain_name+'_t'+str(chain_index),
+                    transitions_dict[transition_name]={
                             'consume':{
-                                chain_name+'_'+str(chain_index-1):1,
-                                amino:1
+                                'p_'+chain_name+'_'+str(chain_index-1):1,
+                                'p_'+amino:1
                             },
                             'produce':{
-                                chain_name+'_'+str(chain_index):1
+                                'p_'+chain_name+'_'+str(chain_index):1
                             }
                         }
-                    )
 #                    print(f'Cadeia {chain_name+'_'+str(chain_index)}:{chain[:chain_index]}')
                 else:
-                    transitions_array.append({
-                            'name':'t_'+chain_name+'_t'+str(chain_index),
+                    transitions_dict[transition_name]={
                             'consume':{
-                                chain_name+'_'+str(chain_index-1):1,
-                                amino:1
+                                'p_'+chain_name+'_'+str(chain_index-1):1,
+                                'p_'+amino:1
                             },
                             'produce':{
-                                chain_output:1
+                                'p_'+chain_output:1
                             }
                         }
-                    )
                 if not amino in amino_count.keys():
                     amino_count[amino]=1
                 else:
@@ -128,7 +125,7 @@ class mRNA2PNetAdapter: ##Alterar nome, dado que isso não implementa o padrão 
         
         return {
             "places":places_dict,
-            "transitions":transitions_array
+            "transitions":transitions_dict
         }
     
 class InvalidmRNASequenceEncodingException(Exception):

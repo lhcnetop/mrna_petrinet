@@ -1,6 +1,7 @@
 import unittest
-import dummy_mrna.mrna2pnet as mrna
-import petrinet.pnet_validator as pnet_validator
+# If you see a linter error here, ensure the package is installed with `pip install -e .` from the project root.
+from mrna_petrinet.mrna2pnet_adapters import mrna2pnet as mrna
+import petri_net_core.petrinet.pnet_validator as pnet_validator
 
 ##  python -m unittest tests/mrna_tests.py -v
 
