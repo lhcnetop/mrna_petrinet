@@ -33,7 +33,7 @@ initial_chains_marking_values = [400, 350, 300, 250, 200, 170, 150, 130, 100, 70
 
 # Initial ribosome values to test
 #initial_ribosome_values = [1, 5, 10, 50, 100, 200, 1000, 5000]
-initial_ribosome_values = [2, 4, 6, 8, 20, 30, 40, 60, 70, 80, 90, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+initial_ribosome_values = [5,10, 50, 100, 500]
 
 # Fixed max protein output goal
 max_protein_output_goal = 100
@@ -105,7 +105,7 @@ if __name__ == '__main__':
     parameter_combinations = []
     
     # Number of times to repeat each experiment
-    num_repetitions = 10
+    num_repetitions = 5
     
     for initial_chains_marking in initial_chains_marking_values:
         for initial_ribosomes in initial_ribosome_values:
@@ -127,34 +127,23 @@ if __name__ == '__main__':
     total_simulations = len(parameter_combinations)
     results = []
     
-    # Use a simple counter for progress
-    from multiprocessing import Value
-    counter = Value('i', 0)
-    
-    def progress_callback(result):
-        with counter.get_lock():
-            counter.value += 1
-            remaining = total_simulations - counter.value
-            print(f"[{datetime.now().strftime('%H:%M:%S')}] Progress: {counter.value}/{total_simulations} completed ({remaining} remaining)")
-        results.append(result)
-    
     with Pool(processes=num_processes) as pool:
-        # Submit all tasks and track progress
-        async_results = []
-        for params in parameter_combinations:
-            async_result = pool.starmap_async(run_single_simulation, [params], callback=progress_callback)
-            async_results.append(async_result)
-        
-        # Wait for all to complete
-        for async_result in async_results:
-            async_result.wait()
+        # Run simulations and track progress
+        for i, params in enumerate(parameter_combinations):
+            result = pool.starmap(run_single_simulation, [params])[0]  # Get first (and only) result
+            results.append(result)
+            
+            # Print progress
+            remaining = total_simulations - (i + 1)
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] Progress: {i+1}/{total_simulations} completed ({remaining} remaining)")
 
     # Process results
     successful_simulations = 0
     failed_simulations = 0
     total_simulation_time = 0
 
-    for success, data_filepath, simulation_time, error_msg in results:
+    for result in results:
+        success, data_filepath, simulation_time, error_msg = result
         if success:
             successful_simulations += 1
             total_simulation_time += simulation_time

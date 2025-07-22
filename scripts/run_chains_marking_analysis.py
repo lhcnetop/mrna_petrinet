@@ -98,12 +98,13 @@ def analyze_simulation_results():
     # Group by initial_ribosomes and excess_factor, then calculate averages
     averaged_results = results_df.group_by(['initial_ribosomes', 'excess_factor']).agg([
         pl.col('max_protein_production').mean().alias('avg_max_protein_production'),
+        pl.col('max_protein_production').median().alias('median_max_protein_production'),
         pl.col('max_protein_production').std().alias('std_max_protein_production'),
         pl.col('max_protein_production').min().alias('min_max_protein_production'),
         pl.col('max_protein_production').max().alias('max_max_protein_production'),
         pl.col('initial_chains_marking').mean().alias('avg_initial_chains_marking'),
         pl.col('total_simulation_steps').mean().alias('avg_total_simulation_steps'),
-        pl.count().alias('number_of_runs')
+        pl.len().alias('number_of_runs')
     ])
     
     # Add percentage of max output protein column
@@ -129,152 +130,13 @@ def analyze_simulation_results():
     
     return averaged_results
 
-def create_plots(results_df):
-    """Create various plots from the analysis results."""
-    if results_df.height == 0:
-        print("No data to plot!")
-        return
-    
-    print("\nCreating plots...")
-    
-    # 1. Heatmap of average max protein production vs initial ribosomes and excess factor
-    pivot_df = results_df.pivot(
-        values="avg_max_protein_production",
-        index="initial_ribosomes", 
-        on="excess_factor"
-    )
-    
-    # Convert pivot to list format for heatmap
-    heatmap_data = []
-    for ribosomes in pivot_df.select("initial_ribosomes").to_series().to_list():
-        row = []
-        for col in pivot_df.columns[1:]:  # Skip initial_ribosomes column
-            filtered_df = pivot_df.filter(pl.col("initial_ribosomes") == ribosomes).select(col)
-            if filtered_df.height > 0:
-                value = filtered_df.item()
-            else:
-                value = None  # or 0, depending on how you want to handle missing data
-            row.append(value)
-        heatmap_data.append(row)
-    
-    # Debug: Print some data to verify
-    print(f"Heatmap data shape: {len(heatmap_data)} rows")
-    if heatmap_data:
-        print(f"First row length: {len(heatmap_data[0])}")
-        print(f"Sample values: {heatmap_data[0][:3]}...")
-    
-    fig_heatmap = px.imshow(
-        heatmap_data,
-        title="Average Protein Production Heatmap - Ribosome Availability Experiment",
-        labels=dict(x="Excess Factor", y="Initial Ribosomes", color="Avg Max Protein Production"),
-        aspect="auto"
-    )
-    fig_heatmap.write_html("data/chains_marking_protein_production_heatmap.html")
-    print("✓ Heatmap saved to data/chains_marking_protein_production_heatmap.html")
-    
-    # 2. 3D Surface plot - properly structured data
-    # Create a pivot table for 3D surface
-    pivot_3d = results_df.pivot(
-        values="avg_max_protein_production",
-        index="initial_ribosomes", 
-        on="excess_factor"
-    )
-    
-    # Extract data for 3D surface
-    # Get unique values for x and y axes
-    x_values = sorted(results_df.select("excess_factor").unique().to_series().to_list())
-    y_values = sorted(results_df.select("initial_ribosomes").unique().to_series().to_list())
-    z_values = []
-    
-    for ribosomes in y_values:
-        row = []
-        for excess in x_values:
-            # Find the value for this ribosomes/excess combination
-            filtered_df = results_df.filter(
-                (pl.col("initial_ribosomes") == ribosomes) & 
-                (pl.col("excess_factor") == excess)
-            ).select("avg_max_protein_production")
-            if filtered_df.height > 0:
-                value = filtered_df.item()
-            else:
-                value = None  # or 0, depending on how you want to handle missing data
-            row.append(value)
-        z_values.append(row)
-    
-    fig_3d = go.Figure(data=[go.Surface(
-        x=x_values,
-        y=y_values,
-        z=z_values,
-        colorscale='Viridis'
-    )])
-    fig_3d.update_layout(
-        title="3D Surface: Average Protein Production vs Ribosome Availability vs Excess Factor",
-        scene=dict(
-            xaxis_title="Excess Factor",
-            yaxis_title="Initial Ribosomes", 
-            zaxis_title="Avg Max Protein Production"
-        )
-    )
-    fig_3d.write_html("data/chains_marking_protein_production_3d_surface.html")
-    print("✓ 3D Surface plot saved to data/chains_marking_protein_production_3d_surface.html")
-    
-    # 3. Line plot: Average protein production vs excess factor for different ribosome counts
-    fig_lines = px.line(
-        results_df,
-        x="excess_factor",
-        y="avg_max_protein_production",
-        color="initial_ribosomes",
-        title="Average Protein Production vs Excess Factor by Ribosome Count",
-        labels=dict(x="Excess Factor", y="Avg Max Protein Production", color="Initial Ribosomes")
-    )
-    fig_lines.write_html("data/chains_marking_protein_production_vs_excess_factor.html")
-    print("✓ Line plot saved to data/chains_marking_protein_production_vs_excess_factor.html")
-    
-    # 4. Scatter plot with size and color based on percentage of max protein production
-    fig_scatter = px.scatter(
-        results_df,
-        x="initial_ribosomes",
-        y="excess_factor",
-        size="percentage_max_protein_production",
-        color="percentage_max_protein_production",
-        title="Ribosome Availability Parameter Space Analysis - % of Max Protein Production",
-        labels=dict(x="Initial Ribosomes", y="Excess Factor", size="% of Max Protein Production", color="% of Max Protein Production")
-    )
-    
-    # Set log scale for x-axis (initial ribosomes)
-    fig_scatter.update_xaxes(type="log")
-    fig_scatter.write_html("data/chains_marking_parameter_space_analysis.html")
-    print("✓ Scatter plot saved to data/chains_marking_parameter_space_analysis.html")
-    
-    # 5. Line plot: Average protein production vs ribosome availability for different ribosome counts
-    fig_chains_lines = px.line(
-        results_df,
-        x="excess_factor",
-        y="avg_max_protein_production",
-        color="initial_ribosomes",
-        title="Average Protein Production vs Excess Factor by Ribosome Count",
-        labels=dict(x="Excess Factor", y="Avg Max Protein Production", color="Initial Ribosomes")
-    )
-    
-    fig_chains_lines.write_html("data/chains_marking_protein_production_vs_excess_factor_by_ribosomes.html")
-    print("✓ Protein production vs excess factor by ribosomes line plot saved to data/chains_marking_protein_production_vs_excess_factor_by_ribosomes.html")
-    
-    # 6. Line plot: Percentage of max protein production vs excess factor for different ribosome counts
-    fig_percentage_lines = px.line(
-        results_df,
-        x="excess_factor",
-        y="percentage_max_protein_production",
-        color="initial_ribosomes",
-        title="Percentage of Max Protein Production vs Excess Factor by Ribosome Count",
-        labels=dict(x="Excess Factor", y="% of Max Protein Production", color="Initial Ribosomes")
-    )
-    
-    fig_percentage_lines.write_html("data/chains_marking_percentage_protein_production_vs_excess_factor.html")
-    print("✓ Percentage protein production vs excess factor line plot saved to data/chains_marking_percentage_protein_production_vs_excess_factor.html")
-    
-    print(f"\nAll plots saved to the data/ folder!")
-
 if __name__ == "__main__":
+    print("=== Starting Chains Marking Analysis ===")
     results = analyze_simulation_results()
     if results is not None:
-        create_plots(results) 
+        print(f"\n=== Analysis Complete ===")
+        print(f"Found {results.height} unique parameter combinations")
+        print(f"Results saved to: data/chains_marking_analysis_results.parquet")
+        print(f"To create plots, run: python scripts/run_chains_marking_plots.py")
+    else:
+        print("\n=== Analysis Failed ===") 
